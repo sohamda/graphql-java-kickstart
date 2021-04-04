@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import soham.spring.graphqljavakickstart.entity.Provider;
 import soham.spring.graphqljavakickstart.entity.Service;
-import soham.spring.graphqljavakickstart.repository.ProviderRepository;
-import soham.spring.graphqljavakickstart.repository.ServiceRepository;
+import soham.spring.graphqljavakickstart.service.ProviderService;
+import soham.spring.graphqljavakickstart.service.ServicesService;
 
 import java.util.List;
 
@@ -14,23 +14,23 @@ import java.util.List;
 public class Query implements GraphQLQueryResolver {
 
     @Autowired
-    private ProviderRepository providerRepository;
+    private ProviderService providerService;
     @Autowired
-    private ServiceRepository serviceRepository;
+    private ServicesService service;
 
     public List<Service> services() {
-        return serviceRepository.findAll();
+        return service.findAllServices();
     }
 
     public Service serviceById(String id) {
-        return serviceRepository.findById(Integer.parseInt(id)).get();
+        return service.findServiceById(id);
     }
 
     public List<Provider> providers() {
-        return providerRepository.findAll();
+        return providerService.findAllProviders();
     }
 
     public Provider providerById(String id) {
-        return providerRepository.findById(Integer.parseInt(id)).get();
+        return providerService.findProviderById(id);
     }
 }
