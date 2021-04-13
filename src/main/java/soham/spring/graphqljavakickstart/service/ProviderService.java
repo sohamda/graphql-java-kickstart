@@ -7,6 +7,7 @@ import soham.spring.graphqljavakickstart.error.NoDataFoundError;
 import soham.spring.graphqljavakickstart.repository.ProviderRepository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -26,5 +27,9 @@ public class ProviderService {
             throw new NoDataFoundError("No Provider found", "PRV-001");
         }
         return provider.get();
+    }
+
+    public List<Provider> findProvidersByIds(List<Integer> ids) {
+        return providerRepository.findByIdIn(ids);
     }
 }

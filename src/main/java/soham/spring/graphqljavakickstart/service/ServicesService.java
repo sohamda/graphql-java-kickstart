@@ -28,7 +28,7 @@ public class ServicesService {
         return service.get();
     }
 
-    public List<Service>  findProviderOfService(Provider provider) {
-        return serviceRepository.findAllByProvider(provider);
+    public List<Service> findProviderOfService(Provider provider) {
+        return serviceRepository.findAllByProviderId(provider.getId());
     }
 }
