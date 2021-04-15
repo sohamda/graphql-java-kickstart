@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  graphql-java-kickstart:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8083:8083"
+    deploy:
+      resources:
+        limits:
+          memory: 320M
+        reservations:
+          memory: 128M
