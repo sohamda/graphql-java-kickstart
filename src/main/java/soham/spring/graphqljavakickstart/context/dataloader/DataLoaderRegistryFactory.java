@@ -25,7 +25,8 @@ public class DataLoaderRegistryFactory {
     }
 
     private BatchLoader<Integer, Provider> createProvidersDataLoader() {
-        final BatchLoader<Integer, Provider> batchLoader = keys -> CompletableFuture.supplyAsync(() -> providerService.findProvidersByIds(keys));
+        final BatchLoader<Integer, Provider> batchLoader = keys ->
+                CompletableFuture.supplyAsync(() -> providerService.findProvidersByIds(keys));
         return batchLoader;
     }
 }
