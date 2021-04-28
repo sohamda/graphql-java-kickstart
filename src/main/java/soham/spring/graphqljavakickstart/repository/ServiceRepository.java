@@ -12,6 +12,6 @@ public interface ServiceRepository extends JpaRepository<Service, Integer> {
 
     public List<Service> findAllByProviderId(Integer providerId);
 
-    @Query(value = "SELECT max(id) FROM Provider")
+    @Query(value = "SELECT max(id) FROM Service")
     Integer maxId();
 }
