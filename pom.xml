@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.4</version>
+		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>soham.spring</groupId>
@@ -14,8 +14,8 @@
 	<name>spring-graphql-java-kickstart</name>
 	<description>Spring Boot project to demonstrate GraphQL with graphql-java-kickstart</description>
 	<properties>
-		<java.version>11</java.version>
-		<graphql-spring-boot-starter-version>11.0.0</graphql-spring-boot-starter-version>
+		<java.version>17</java.version>
+		<graphql-spring-boot-starter-version>12.0.0</graphql-spring-boot-starter-version>
 	</properties>
 	<dependencies>
 		<dependency>

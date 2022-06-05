@@ -1,7 +1,7 @@
 package soham.spring.graphqljavakickstart.context.dataloader;
 
 import org.dataloader.BatchLoader;
-import org.dataloader.DataLoader;
+import org.dataloader.DataLoaderFactory;
 import org.dataloader.DataLoaderRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,13 +20,12 @@ public class DataLoaderRegistryFactory {
 
     public DataLoaderRegistry buildDataLoaderRegistry() {
         var registry = new DataLoaderRegistry();
-        registry.register(PROVIDERS_DATA_LOADER, DataLoader.newDataLoader(createProvidersDataLoader()));
+        registry.register(PROVIDERS_DATA_LOADER, DataLoaderFactory.newDataLoader(createProvidersDataLoader()));
         return registry;
     }
 
     private BatchLoader<Integer, Provider> createProvidersDataLoader() {
-        final BatchLoader<Integer, Provider> batchLoader = keys ->
+        return keys ->
                 CompletableFuture.supplyAsync(() -> providerService.findProvidersByIds(keys));
-        return batchLoader;
     }
 }
