@@ -1,7 +1,6 @@
 package soham.spring.graphqljavakickstart.context;
 
-import graphql.kickstart.execution.context.GraphQLContext;
-import graphql.kickstart.servlet.context.DefaultGraphQLServletContext;
+import graphql.kickstart.execution.context.GraphQLKickstartContext;
 import graphql.kickstart.servlet.context.GraphQLServletContextBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,21 +18,17 @@ public class GraphQLContextBuilder implements GraphQLServletContextBuilder {
     private DataLoaderRegistryFactory dataLoaderRegistryFactory;
 
     @Override
-    public GraphQLContext build(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
-        return DefaultGraphQLServletContext.createServletContext()
-                .with(httpServletRequest)
-                .with(httpServletResponse)
-                .with(dataLoaderRegistryFactory.buildDataLoaderRegistry())
-                .build();
+    public GraphQLKickstartContext build(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+        return GraphQLKickstartContext.of(dataLoaderRegistryFactory.buildDataLoaderRegistry());
     }
 
     @Override
-    public GraphQLContext build(Session session, HandshakeRequest handshakeRequest) {
+    public GraphQLKickstartContext build(Session session, HandshakeRequest handshakeRequest) {
         throw new IllegalStateException("No Session supported");
     }
 
     @Override
-    public GraphQLContext build() {
+    public GraphQLKickstartContext build() {
         throw new IllegalStateException("No default supported");
     }
 }

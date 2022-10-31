@@ -15,7 +15,8 @@
 	<description>Spring Boot project to demonstrate GraphQL with graphql-java-kickstart</description>
 	<properties>
 		<java.version>17</java.version>
-		<graphql-spring-boot-starter-version>12.0.0</graphql-spring-boot-starter-version>
+		<graphql-spring-boot-starter-version>14.0.0</graphql-spring-boot-starter-version>
+		<graphql-java-tools.version>11.1.2</graphql-java-tools.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -46,10 +47,16 @@
 			<artifactId>graphql-spring-boot-starter</artifactId>
 			<version>${graphql-spring-boot-starter-version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.graphql-java-kickstart</groupId>
+			<artifactId>graphql-java-tools</artifactId>
+			<version>${graphql-java-tools.version}</version>
+		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
+			<groupId>com.graphql-java-kickstart</groupId>
+			<artifactId>graphql-spring-boot-starter-test</artifactId>
+			<version>${graphql-spring-boot-starter-version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
